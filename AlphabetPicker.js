@@ -26,6 +26,8 @@ export default class AlphabetPicker extends Component {
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
             onMoveShouldSetPanResponder: () => true,
+            onPanResponderTerminationRequest: () => false,
+            onStartShouldSetPanResponderCapture: () => true,
             onPanResponderGrant: (e, gestureState) => {
                 this.props.onTouchStart && this.props.onTouchStart();
 
@@ -77,7 +79,14 @@ export default class AlphabetPicker extends Component {
                 ref='alphabetContainer'
                 {...this._panResponder.panHandlers}
                 onLayout={this._onLayout.bind(this)}
-                style={{ paddingHorizontal: 5, backgroundColor: '#fff', borderRadius: 1, justifyContent: 'center' }}>
+                style={
+                  this.props.pickerStyle || {
+                    paddingHorizontal: 5,
+                    backgroundColor: '#fff',
+                    borderRadius: 1,
+                    justifyContent: 'center',
+                  }
+                }>
                 <View>
                     {this._letters}
                 </View>

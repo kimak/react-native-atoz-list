@@ -72,7 +72,7 @@ export default class AtoZList extends Component {
   render() {
     this._alphabetInstance = this._alphabetInstance || (
       <View style={styles.alphabetSidebar}>
-        <AlphabetPicker alphabet={this.state.alphabet} onTouchLetter={this._onTouchLetter.bind(this)} />
+        <AlphabetPicker pickerStyle={this.props.pickerStyle} alphabet={this.state.alphabet} onTouchLetter={this._onTouchLetter.bind(this)} />
       </View>
     );
 
@@ -123,4 +123,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
